@@ -32,7 +32,7 @@ RUN echo 'export DENO_INSTALL="/usr/local/deno"' >> /etc/bash.bashrc && \
 ENV METEOR_INSTALL="/usr/local/meteor"
 ENV PATH="$METEOR_INSTALL/bin:$PATH"
 
-RUN curl https://install.meteor.com/ | sh && \
+RUN curl https://install.meteor.com/ | sed 's#https://static-meteor#https://mirrors.tuna.tsinghua.edu.cn/meteor#g' | sh && \
     mv ~/.meteor $METEOR_INSTALL
 
 RUN echo 'export METEOR_INSTALL="/usr/local/meteor"' >> /etc/bash.bashrc && \
