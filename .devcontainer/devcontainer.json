@@ -4,9 +4,10 @@
         "context": "..",
         "dockerfile": "./Dockerfile"
     },
-	"features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-    },
+	"runArgs": [
+		"--add-host=host.docker.internal:host-gateway", 
+		"-v", "/var/run/docker.sock:/var/run/docker-host.sock"
+	  ],
 	"forwardPorts": [3000],
 	"customizations": {
 		"vscode": {
